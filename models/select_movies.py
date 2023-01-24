@@ -9,9 +9,11 @@ release_date
 rating
 classification
 The default order of the movies should be alphabetically by title. """
+# pytest -s ./test/test_select_movies.py
+# PYTHONPATH=$(pwd)  ...pytest
 
 
-def select_movies():
+def select_movies(sort_by='title'):
     conn = pg.Connection('daniel', database='nc_flix', password='1234')
     # THE DOCS I LOOKED AT DID NOT USE CONN.RUN FOR QUERIES
     # result = conn.run('SELECT * FROM movies;')
@@ -26,4 +28,4 @@ def select_movies():
 
     cursor.close()
 
-    return movies
+    return sorted(movies, key=lambda x: x[sort_by] if x[sort_by] is not None else float('inf'))
