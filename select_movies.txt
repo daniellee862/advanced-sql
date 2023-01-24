@@ -1,0 +1,8 @@
+============================= test session starts ==============================
+platform linux -- Python 3.11.1, pytest-7.2.1, pluggy-1.0.0
+rootdir: /home/daniel/Desktop/northcoders/data-engineering/week2-data/de-data-nc-flix
+collected 1 item
+
+test/test_select_movies.py .                                             [100%]
+
+============================== 1 passed in 0.11s ===============================

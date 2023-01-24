@@ -75,9 +75,6 @@ You are now connected to database "nc_flix" as user "daniel".
 
 
  ...and this is the most abundant genre in that store:
-    city    
-------------
- Leeds
- Manchester
-(2 rows)
+--
+(1 row)
 
