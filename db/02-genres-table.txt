@@ -1,0 +1,55 @@
+You are now connected to database "nc_flix" as user "daniel".
+CREATE TABLE
+INSERT 0 8
+ genre_id | genre_slug |                          decscription                          
+----------+------------+----------------------------------------------------------------
+        1 | family     | Fun for everyone!
+        2 | comedy     | A giggle a minute
+        3 | romance    | I feel it in my fingers, I feel it in my toes
+        4 | fantasy    | There be elves and witches
+        5 | action     | Shooty shooty, punchy punchy
+        6 | drama      | Plot driven story time
+        7 | crime      | Watch out, there's gangsters about
+        8 | sci_fi     | Your scientists were so preoccupied with whether they could...
+(8 rows)
+
+CREATE TABLE
+INSERT 0 34
+               title                | genre_slug 
+------------------------------------+------------
+ Ghostbusters II                    | family
+ The Breakfast Club                 | comedy
+ Todo Sobre Mi Madre                | romance
+ Todo Sobre Mi Madre                | family
+ The Lion King II: Simba's Pride    | romance
+ The Care Bears Movie               | romance
+ Tron                               | romance
+ Highlander                         | romance
+ Highlander                         | family
+ Highlander                         | fantasy
+ Cleopatra                          | romance
+ Catch Me If You Can                | romance
+ Taxi Driver                        | comedy
+ The Princess Switch                | romance
+ The Princess Switch                | family
+ The Princess Switch                | action
+ Girl, Interrupted                  | romance
+ The Fellowship of the Ring         | romance
+ Episode I - The Phantom Menace     | romance
+ Episode IV - A New Hope            | romance
+ Episode IX - The Rise of Skywalker | romance
+ Episode IX - The Rise of Skywalker | comedy
+ Back to the Future                 | romance
+ Back to the Future Part II         | romance
+ The Godfather                      | romance
+ The Godfather                      | drama
+ Raiders of the Lost Ark            | romance
+ Pulp Fiction                       | romance
+ Toy Story                          | romance
+ Toy Story                          | crime
+ Toy Story                          | sci_fi
+ Groundhog Day                      | romance
+ A Fish Called Wanda                | romance
+ Independance Day                   | romance
+(34 rows)
+
