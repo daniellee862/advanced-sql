@@ -1,10 +1,12 @@
-# NC-flix
+# Advanced SQL with Python, PG8000 and PostgreSQL 📊
 
-This is a two day sprint designed to increase your knowledge of some more advanced SQL queries. After the lunch break on day two, regardless of your progress, move onto the Section Two tasks. If you complete the `pg-8000` steps, come back to your Section One tasks.
+## Introduction 🎥 :
+The intention of this project is to take a deeper dive into more advanced SQL queries, data analysis, and Python integration. The theme of the project and database is based on a video rental store. 
 
 ---
 
-Video streaming services are all well and good, but they lack a certain physical quality. Not to miss out on a questionable business venture, Northcoders is bringing back the **video rental store**!
+## Overview 🎬 :
+Video streaming services are all well and good, but they lack a certain physical quality. Not to miss out on a questionable business venture, we are bringing back the **video rental store**!
 
 Business is somewhat slow at the moment (surprisingly!) so we've been tasked to start thinking about how we store our data. At the moment we have the following three tables:
 
@@ -16,25 +18,24 @@ Business is somewhat slow at the moment (surprisingly!) so we've been tasked to 
 
 -   stock
 
-# Section One
+---
 
-## Task 1
+# Section One: 
 
-1. Query the database to retrieve all of the movie titles that were released in the 21st century.
+## Task 1 - Exploring the data 🧐
 
-2. Query the database to find the oldest customer.
+- Extracted 21st century movie titles using SQL queries based on release years.
+- Identified the oldest customer by extracting and sorting birthdates.
+- Organized customer names alphabetically using SQL.
+- Computed average ratings for 1980s movies, handling null values.
+- Implemented a 5% rental fee reduction through precise SQL commands, demonstrating data manipulation skills.
 
-3. Query the database to find the customers who's name begin with the letter _D_. Organise the results by age, youngest to oldest.
 
-4. Query the database to find the average rating of the movies released in the 1980s. **If there are any `null` ratings you should treat them as a 0 rating**
+> _**If you want to run the updates multiple times without going bankrupt, the data will need to be reset. I added a bash script that will run all of the *.sql files in the ./db folder. Try running the command `./run-all.sh` from your terminal in the root of this repository. This will save the output of each *.sql file in the ./db directory to a \*.txt file of the same name.**_
 
-5. The rise in living costs is affecting rentals, drop the cost of all rentals by 5% and display the updated table. **As this is a monetary value make sure it is rounded to 2 decimal places**
+## Task 2 - Creating Genre Relationships 🤝
 
-> _**If you want to run the updates multiple times without going bankrupt, the data will need to be reset. We've added a bash script that will run all of the *.sql files in the ./db folder. Try running the command `./run-all.sh` from your terminal in the root of this repository. This will save the output of each *.sql file in the ./db directory to a \*.txt file of the same name.**_
-
-## Task 2
-
-1. Create a `genres` table with the following data:
+2.1 Created a `genres` table with the following data. Defined genres and descriptions, showcasing SQL schema design.
 
 | genre_slug | description                                                    |
 | ---------- | -------------------------------------------------------------- |
@@ -47,9 +48,10 @@ Business is somewhat slow at the moment (surprisingly!) so we've been tasked to 
 | crime      | Watch out, there's gangsters about                             |
 | sci_fi     | Your scientists were so preoccupied with whether they could... |
 
-2. Movies can often be associated with more than one genre. Create a many to many relationship between the `genres` table and the `movies` using a junction table.
 
-3. Insert some data about the film genres. Feel free to use the information in the table below:
+2.2 Established movie-genre relationships: Designed a junction table with many to many relationship between the `genres` and the `movies` tables.
+
+2.3 Populated genre table: Inserted movie data, validating data manipulation and SQL skills.
 
 | Film                               | Genres               |
 | ---------------------------------- | -------------------- |
@@ -79,111 +81,42 @@ Business is somewhat slow at the moment (surprisingly!) so we've been tasked to 
 | A Fish Called Wanda                | Comedy, Crime        |
 | Independence Day                   | Action, Sci-Fi       |
 
-## Task 3
+## Task 3 - Data Insights 🔍
 
-**If there are any `null` ratings you should treat them as a 0 rating!**
+- Analyzed genre inventory: Calculated film counts for each genre, emphasizing SQL aggregations.
+- Explored film ratings in Newcastle: Queried average ratings, showcasing data interaction.
+- Revealed '90s movie excellence: Combined filtering and aggregation, demonstrating versatile SQL application.
 
-1. Query the database to find the number of films in stock for each genre.
+## Task 4 - Analysing Sequal Availability 🏆
 
-2. Query the database to find the average rating for films in stock in Newcastle.
+- Queried the database to identify the store with the highest total number of sequel copies. Explored this using SQL queries with a focus on film titles containing 'II' or 'VI' as indicators of sequels.
+- Enhanced sequel identification by modifying the movies table to better track sequel information. Adapted previous queries to utilize the updated structure.
 
-3. Query the database to retrieve all the films released in the 90s which have a rating greater than the total average.
+## Task 5 - Creating a Rental Framework 🖼️
 
-4. Query the database to find the amount of films in stock, across **all** stores, of the top rated film of the five most recently released films.
-
-5. Query the database to find a list of all the locations customers live in which **don't** contain a store.
-
-6. Query the database to find a list of all the locations we have influence over (locations of stores and/or customers), **there should be no repeated data**.
-
-7. Of the stores which exist in locations that have customers, calculate which store has the largest catalogue of stock. What is the most abundant genre in that store?
-
-## Task 4
-
-1. Query the database to find the store the highest total number of copies of sequels.
-
-    > _Note: For now let's assume you can tell if a film is a sequel if the title contains something like 'II' or 'VI'._
-
-2. This is likely not a good way to identify sequels going forward. Alter the movies table to track this information better and then update previous query to make use of this new structure.
-
-## Task 5
-
-1. Design a way of storing information on rentals. A rental should track the following information:
+ - Designined an effective rental information system: rentals track the following information:
 
     - rental_id
     - stock_id
     - rental_start
     - rental_end
     - customer_id
+   
+- Fulfilling complex customer rental requests: 
+   - The film must be age appropriate (classification of U)
+   - The film must be available in Birmingham.
+   - The film must not have been rented more than 5 times already
 
-    Add some rental rows we can query later.
-
-2. Finally, we have a customer in one of our stores! They wish to rent a film but have some requirements:
-
--   The film must be age appropriate (classification of U)
--   The film must be available in Birmingham.
--   The film must not have been rented more than 5 times already
-
-Instead of creating a list of only the films that match this criteria, create an output which marks `yes` or `no` in a column that represents the requirement. An example has been given below:
+Instead of creating a list of only the films that match this criteria, I created an output which marks `yes` or `no` in a column that represents the requirement. example ; 
 
 | title   | age_appropriate | in_stock_nearby | not_too_mainstream |
 | ------- | --------------- | --------------- | ------------------ |
 | x-men 2 | no              | yes             | yes                |
 
-## Task 6
 
-An Entity Relationship Diagram (ERD) is a good way to visualise the structure of a database and it's relationships. Use the following free software [dbdiagram.io](https://dbdiagram.io/home) to draw out the relationships between the different tables.
 
-# Section Two
+## Task 6 - Visualising with ERD's 📉
 
-Using the `pg8000` library you can integrate your SQL querying skills with Python. You should build up each function feature by feature using TDD. You can consider your locally hosted database as a test database so we don't need to mock the connection. Any other helper functions should be tested individually.
+- Crafted an Entity Relationship Diagram (ERD) illustrating database structure and relationships using dbdiagram.io. Leveraged the tool's visualization capabilities to depict intricate connections between tables.
 
-The happy and sad path should be considered. An error should be raised in the event an invalid query parameter has been passed.
 
-1. Create the function `select_movies`. It should return a list of movie dictionaries. From your locally hosted movies table.
-   Each movie should contain the following keys:
-
--   movie_id
--   title
--   release_date
--   rating
--   classification
-
-The default order of the movies should be alphabetically by title.
-
-2. It should have an optional `sort_by` argument which allows it to be sorted by:
-
--   release_date
--   rating
--   cost
-
-3. It should accept an optional `order` argument which allows the sort order to be flipped.
-
-4. It should accept an optional `min_rating` argument which filters the list of movies to only contains movies with ratings greater than the passed value.
-
-5. It should accept an optional `location` argument which filters the list of movies to only return the movie titles available in that location.
-
-6. Query the Rental Information table you made in Task 5. Create a single output with the following information:
-
--   store_id, location, number of customers in the same location
--   number of films available in store
--   most valued customer (customer with the most rentals)
--   most popular film (film with most rentals)
--   average rating of each store (calculated as average of all films in store) rounded to **1 decimal place**
-
-_hint: it might be helpful to build up the query bullet point by bullet point_
-
-**If there are any `null` ratings you should treat them as a 0 rating!**
-
-7. a) We are refining the quality of the films we currently have in our database by removing the lowest rated. Management has asked you to create an output with information about the lowest rated film of each genre:
-
--   Genre name
--   Film title
--   Rating
-
-b) Management is now trying to refine the quality of stock in the **Manchester** store particularly. Create an output that that shows:
-
--   Genre name
--   Film title
--   Rating
-
-**_If the store doesn't stock any films of a certain genre then do not include that genre in the output table._**
